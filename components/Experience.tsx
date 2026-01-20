@@ -1,0 +1,187 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, Calendar } from "lucide-react";
+import { fadeInUp, fadeInLeft, staggerContainer } from "@/lib/animations";
+import { getTextGradient } from "@/lib/colors";
+import siteContent from "@/data/site-content.json";
+
+export default function Experience() {
+  const experiences = [
+    {
+      title: "Tech Lead (Fullstack Blockchain)",
+      company: "SwordField Technologies Pvt Ltd",
+      period: "August 2025 - Present",
+      description:
+        "Spearheading the development of an advanced DeFi protocol featuring autonomous Uniswap V3 position management, enabling users to deposit USDC and earn optimized yields without manual liquidity provisioning. Orchestrating full-stack architecture spanning smart contracts, backend infrastructure, and modern web interfaces.",
+      achievements: [
+        "Promoted to technical leadership role, directing cross-functional team in building production-grade DeFi infrastructure",
+        "Engineered automated position rebalancing system achieving 40% higher capital efficiency through dynamic fee tier optimization",
+        "Architected scalable microservices architecture integrating Solidity smart contracts, Node.js backend, and Next.js frontend",
+        "Established comprehensive CI/CD pipeline with 95% test coverage, reducing deployment time by 60%",
+      ],
+      tags: [
+        "Solidity",
+        "Node.js",
+        "Next.js",
+        "DeFi",
+        "Uniswap V3",
+        "Team Leadership",
+      ],
+    },
+    {
+      title: "Fullstack Blockchain Developer",
+      company: "SwordField Technologies Pvt Ltd",
+      period: "January 2023 - July 2025",
+      description:
+        "Architected and deployed multiple blockchain-based entertainment platforms, including Nakashi—a pioneering phygital comic ecosystem on Ethereum. Engineered robust smart contract infrastructure with enterprise-grade backend systems for secure digital asset ownership and distribution across multiple blockchain networks.",
+      achievements: [
+        "Launched Nakashi platform processing 10,000+ NFT transactions, implementing ERC-721 contracts with royalty mechanisms and Node.js microservices",
+        "Developed Warlands NFT battle royale featuring on-chain randomness and dynamic pack minting, generating $500K+ in primary sales",
+        "Built Underground Waifus free-to-play TCG on Binance Smart Chain, integrating Chainlink VRF for provably fair card distribution",
+        "Delivered full-stack solutions with 99.9% uptime, handling 50,000+ daily active users across multiple blockchain games",
+      ],
+      tags: [
+        "Solidity",
+        "Node.js",
+        "Ethereum",
+        "NFT",
+        "Chainlink VRF",
+        "Binance",
+      ],
+    },
+    {
+      title: "Junior Blockchain Developer",
+      company: "Digitlance Pvt Ltd",
+      period: "January 2022 - December 2022",
+      description:
+        "Executed smart contract deployment and validation across diverse EVM-compatible blockchain networks. Developed proficiency in multi-chain development practices, security auditing, and comprehensive testing methodologies for production-ready decentralized applications.",
+      achievements: [
+        "Successfully deployed and audited 25+ smart contracts across Ethereum, Polygon, BSC, and Avalanche networks",
+        "Implemented automated testing suites using Hardhat and Foundry, achieving 90%+ code coverage on critical contracts",
+        "Conducted security assessments identifying and resolving 15+ vulnerabilities before mainnet deployment",
+        "Collaborated on cross-chain bridge integration, facilitating seamless asset transfers between multiple blockchain ecosystems",
+      ],
+      tags: ["Solidity", "EVM", "Smart Contracts", "Testing"],
+    },
+    {
+      title: "Junior Blockchain Engineer",
+      company: "Nextazy Solutions Pvt Ltd",
+      period: "August 2021 - December 2021",
+      description:
+        "Conducted comprehensive research and development for Cosmos SDK-based blockchain implementation. Engineered full-stack decentralized applications leveraging MERN stack architecture with scalable backend infrastructure. Represented company at international blockchain conferences, gaining exposure to cutting-edge Web3 innovations.",
+      achievements: [
+        "Researched and prototyped custom blockchain solution on Cosmos SDK, evaluating consensus mechanisms and validator economics",
+        "Developed production-ready dApps using React.js, Node.js/Express.js, and MongoDB, serving 5,000+ concurrent users",
+        "Built RESTful APIs and WebSocket services for real-time blockchain data synchronization with 99.5% uptime",
+        "Attended Dubai Blockchain Expo 2021, networking with 100+ industry leaders and analyzing emerging DeFi protocols",
+      ],
+      tags: ["Cosmos Chain", "React.js", "Node.js", "Express.js", "MongoDB"],
+    },
+    {
+      title: "Blockchain Research Intern",
+      company: "Nextazy Solutions Pvt Ltd",
+      period: "April 2021 - July 2021",
+      description:
+        "Conducted in-depth analysis of blockchain protocols, consensus mechanisms, and real-world enterprise use cases. Contributed to technical documentation and strategic research initiatives, establishing foundational expertise in distributed ledger technologies and cryptographic systems.",
+      achievements: [
+        "Analyzed 20+ blockchain protocols including Ethereum, Polkadot, and Solana, evaluating scalability, security, and decentralization trade-offs",
+        "Co-authored technical whitepapers and research reports on DeFi protocols, contributing to client proposals worth $200K+",
+        "Researched Layer 2 scaling solutions and zero-knowledge proof systems, presenting findings to senior engineering team",
+        "Developed comprehensive technical documentation and protocol comparison matrices used across multiple client engagements",
+      ],
+      tags: ["Blockchain Research", "Technical Writing", "Protocol Analysis"],
+    },
+  ];
+
+  return (
+    <section
+      id="experience"
+      className="py-6 sm:py-8 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-4 sm:mb-6"
+        >
+          <h2
+            className={`text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2`}
+          >
+            {siteContent.experience.title}
+          </h2>
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto">
+            {siteContent.experience.subtitle}
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="space-y-3 sm:space-y-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {experiences.map((exp) => {
+            return (
+              <motion.div key={exp.title} variants={fadeInLeft}>
+                <Card className="group hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 border-border/50 hover:border-primary/50 hover:bg-primary/5 bg-card">
+                  <CardContent className="pt-3 sm:pt-4 pb-3 sm:pb-4 px-3 sm:px-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 sm:mb-3">
+                      <div className="flex-1">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1">
+                          {exp.title}
+                        </h3>
+                        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">
+                          <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <span className="line-clamp-1">{exp.company}</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-muted-foreground mt-1 sm:mt-0 sm:ml-4">
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="whitespace-nowrap">{exp.period}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-none">
+                      {exp.description}
+                    </p>
+
+                    <div className="mb-2 sm:mb-3">
+                      <h4 className="text-xs sm:text-sm font-semibold mb-1 sm:mb-1.5">
+                        Key Achievements:
+                      </h4>
+                      <ul className="list-disc list-inside space-y-0.5 sm:space-y-1 text-[10px] sm:text-xs text-muted-foreground">
+                        {exp.achievements.slice(0, 3).map((achievement, i) => (
+                          <li key={i} className="line-clamp-1">
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                      {exp.tags.map((tag) => (
+                        <Badge
+                          key={tag}
+                          variant="secondary"
+                          className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0 sm:py-0.5"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

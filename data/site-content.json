@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "name": "Karan Singh Chauhan",
+    "title": "Fullstack Blockchain Developer",
+    "tagline": "Building the future of decentralized applications",
+    "description": "Specialized in Solidity, DeFi protocols, and full-stack Web3 development. Passionate about creating secure, scalable blockchain solutions.",
+    "github": "https://github.com/0xkaranchauhan",
+    "linkedin": "https://www.linkedin.com/in/karan-singh-chauhan-68305112a/",
+    "twitter": "https://twitter.com/0xkaranchauhan"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Building innovative solutions and leading teams in the blockchain space"
+  },
+  "blockchain": {
+    "title": "Blockchain Expertise",
+    "subtitle": "Deep expertise in blockchain technologies and decentralized systems"
+  },
+  "github": {
+    "title": "GitHub Activity",
+    "subtitle": "Real-time data from GitHub showing contributions and activity",
+    "username": "0xkaranchauhan"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind? Let's build something amazing together",
+    "email": "kcbizzkc@gmail.com"
+  }
+}

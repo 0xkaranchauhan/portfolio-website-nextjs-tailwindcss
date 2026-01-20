@@ -1,34 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Karan Singh Chauhan - Portfolio
+
+Modern portfolio website showcasing blockchain expertise, full-stack development skills, and professional experience as a Tech Lead (Fullstack Blockchain).
+
+## Features
+
+- **Modern Design**: Clean, professional UI with smooth animations using Framer Motion
+- **Dark Mode**: Toggle between light and dark themes
+- **Responsive**: Fully responsive design that works on all devices
+- **GitHub Integration**: Display GitHub statistics and contribution graphs
+- **Blockchain Showcase**: Dedicated sections for blockchain expertise and DeFi projects
+- **Interactive Components**: Engaging UI with hover effects and smooth transitions
+- **SEO Optimized**: Proper meta tags and semantic HTML
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+- **Language**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Portfolio Information
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This portfolio is configured for:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Name**: Karan Singh Chauhan
+- **Role**: Tech Lead (Fullstack Blockchain)
+- **GitHub**: kchizz
+- **Email**: kchizzk@gmail.com
+- **LinkedIn**: karan-singh-chauhan
 
-## Learn More
+All personal information, work experience, projects, and skills have been configured based on the resume.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+portfolio/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Main page
+│   └── globals.css         # Global styles
+├── components/
+│   ├── Navigation.tsx      # Navigation bar with dark mode
+│   ├── Hero.tsx           # Hero section
+│   ├── GitHubStats.tsx    # GitHub statistics
+│   ├── BlockchainExpertise.tsx
+│   ├── Experience.tsx     # Work experience
+│   ├── Skills.tsx         # Technical skills
+│   ├── Projects.tsx       # Featured projects
+│   ├── Contact.tsx        # Contact form
+│   └── Footer.tsx         # Footer
+└── components/ui/         # shadcn/ui components
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Deploy easily on Vercel:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Or build for production:
+
+```bash
+npm run build
+npm start
+```
+
+## License
+
+MIT License - feel free to use this template for your own portfolio!
