@@ -74,7 +74,7 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="text-sm font-medium hover:text-primary transition-colors cursor-pointer"
               >
                 {item.name}
               </motion.a>
@@ -86,7 +86,7 @@ export default function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setIsDark(!isDark)}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
             >
               {isDark ? (
                 <Sun className="h-5 w-5" />
@@ -98,7 +98,7 @@ export default function Navigation() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -125,7 +125,7 @@ export default function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block text-sm font-medium hover:text-primary transition-colors"
+                  className="block text-sm font-medium hover:text-primary transition-colors cursor-pointer"
                 >
                   {item.name}
                 </a>

@@ -66,7 +66,7 @@ export default function Hero() {
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-tight pb-2"
           >
             Karan Singh Chauhan
           </motion.h1>
@@ -83,14 +83,23 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
-            <Button size="lg" className="gap-2">
+            <Button size="lg" className="gap-2 cursor-pointer">
               <Mail className="w-5 h-5" />
               Get in Touch
             </Button>
-            <Button size="lg" variant="outline" className="gap-2">
-              <Download className="w-5 h-5" />
-              Download CV
-            </Button>
+            <a
+              href="/Karan Resume.pdf"
+              download="Karan_Singh_Chauhan_Resume.pdf"
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2 cursor-pointer"
+              >
+                <Download className="w-5 h-5" />
+                Download CV
+              </Button>
+            </a>
           </motion.div>
 
           <motion.div
@@ -101,7 +110,7 @@ export default function Hero() {
               href="https://github.com/0xkaranchauhan"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
             >
               <Github className="w-6 h-6" />
             </a>
@@ -109,7 +118,7 @@ export default function Hero() {
               href="https://www.linkedin.com/in/karan-singh-chauhan-68305112a/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
             >
               <Linkedin className="w-6 h-6" />
             </a>

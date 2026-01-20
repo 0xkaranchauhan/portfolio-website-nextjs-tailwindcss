@@ -104,7 +104,7 @@ export default function Contact() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center transition-colors ${link.color}`}
+                        className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center transition-colors cursor-pointer ${link.color}`}
                         aria-label={link.label}
                       >
                         <link.icon className="w-5 h-5" />
@@ -160,7 +160,7 @@ export default function Contact() {
                       />
                     </div>
 
-                    <Button className="w-full gap-2">
+                    <Button className="w-full gap-2 cursor-pointer">
                       <Send className="w-4 h-4" />
                       Send Message
                     </Button>

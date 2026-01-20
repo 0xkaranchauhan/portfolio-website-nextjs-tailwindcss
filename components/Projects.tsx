@@ -116,7 +116,7 @@ export default function Projects() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1"
+                      className="flex-1 cursor-pointer"
                       asChild
                     >
                       <a
@@ -128,7 +128,7 @@ export default function Projects() {
                         Code
                       </a>
                     </Button>
-                    <Button size="sm" className="flex-1" asChild>
+                    <Button size="sm" className="flex-1 cursor-pointer" asChild>
                       <a
                         href={project.demo}
                         target="_blank"

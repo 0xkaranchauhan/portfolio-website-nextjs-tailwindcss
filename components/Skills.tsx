@@ -83,17 +83,29 @@ export default function Skills() {
           viewport={{ once: true }}
         >
           <Tabs defaultValue="blockchain" className="max-w-4xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 h-auto">
-              <TabsTrigger value="blockchain" className="text-xs sm:text-sm">
+            <TabsList className="inline-flex w-auto mb-8 h-auto overflow-x-auto">
+              <TabsTrigger
+                value="blockchain"
+                className="text-xs sm:text-sm cursor-pointer flex-shrink-0"
+              >
                 Blockchain
               </TabsTrigger>
-              <TabsTrigger value="frontend" className="text-xs sm:text-sm">
+              <TabsTrigger
+                value="frontend"
+                className="text-xs sm:text-sm cursor-pointer flex-shrink-0"
+              >
                 Frontend
               </TabsTrigger>
-              <TabsTrigger value="backend" className="text-xs sm:text-sm">
+              <TabsTrigger
+                value="backend"
+                className="text-xs sm:text-sm cursor-pointer flex-shrink-0"
+              >
                 Backend
               </TabsTrigger>
-              <TabsTrigger value="devops" className="text-xs sm:text-sm">
+              <TabsTrigger
+                value="devops"
+                className="text-xs sm:text-sm cursor-pointer flex-shrink-0"
+              >
                 DevOps
               </TabsTrigger>
             </TabsList>

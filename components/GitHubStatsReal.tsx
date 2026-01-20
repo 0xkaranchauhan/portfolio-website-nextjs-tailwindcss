@@ -283,7 +283,7 @@ export default function GitHubStatsReal() {
                     variant={selectedYear === null ? "default" : "outline"}
                     size="sm"
                     onClick={() => setSelectedYear(null)}
-                    className="text-xs font-medium"
+                    className="text-xs font-medium cursor-pointer"
                   >
                     Last Year
                   </Button>
@@ -293,7 +293,7 @@ export default function GitHubStatsReal() {
                       variant={selectedYear === year ? "default" : "outline"}
                       size="sm"
                       onClick={() => setSelectedYear(year)}
-                      className="text-xs font-medium"
+                      className="text-xs font-medium cursor-pointer"
                     >
                       {year}
                     </Button>
@@ -355,7 +355,7 @@ export default function GitHubStatsReal() {
                             href={repo.repository.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm font-medium hover:text-primary transition-colors"
+                            className="text-sm font-medium hover:text-primary transition-colors cursor-pointer"
                           >
                             {repo.repository.name}
                           </a>
@@ -406,7 +406,7 @@ export default function GitHubStatsReal() {
                               href={repo.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-sm font-semibold hover:text-primary transition-colors truncate block hover:underline"
+                              className="text-sm font-semibold hover:text-primary transition-colors truncate block hover:underline cursor-pointer"
                             >
                               {repo.name}
                             </a>
