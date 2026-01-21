@@ -97,21 +97,16 @@ export default function Experience() {
   ];
 
   return (
-    <section
-      id="experience"
-      className="py-6 sm:py-8 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"
-    >
+    <section id="experience" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mb-4 sm:mb-6"
+          className="text-center mb-12"
         >
-          <h2
-            className={`text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2`}
-          >
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-4`}>
             {siteContent.experience.title}
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto">
@@ -129,7 +124,7 @@ export default function Experience() {
           {experiences.map((exp) => {
             return (
               <motion.div key={exp.title} variants={fadeInLeft}>
-                <Card className="group hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 border-border/50 hover:border-primary/50 hover:bg-primary/5 bg-card">
+                <Card className="group transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
                   <CardContent className="pt-3 sm:pt-4 pb-3 sm:pb-4 px-3 sm:px-6">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 sm:mb-3">
                       <div className="flex-1">

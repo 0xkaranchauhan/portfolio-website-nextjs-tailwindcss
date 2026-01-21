@@ -33,7 +33,7 @@ export default function GitHubStats() {
   ];
 
   return (
-    <section id="github" className="py-20 bg-muted/50">
+    <section id="github" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export default function GitHubStats() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="transition-shadow">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between mb-4">
                     <stat.icon className={`w-8 h-8 ${stat.color}`} />

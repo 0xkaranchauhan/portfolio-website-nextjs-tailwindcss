@@ -26,29 +26,7 @@ export default function Hero() {
       id="about"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
-
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, Math.random() * 100 - 50],
-              x: [0, Math.random() * 100 - 50],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
-      </div>
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" /> */}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div

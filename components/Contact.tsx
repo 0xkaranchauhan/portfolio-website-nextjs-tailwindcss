@@ -34,10 +34,7 @@ export default function Contact() {
   ];
 
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"
-    >
+    <section id="contact" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +57,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="border-border/50 bg-card hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:bg-primary/5">
+          <Card className="border-border/50 bg-card hover:border-primary/50 transition-all duration-300">
             <CardContent className="pt-6">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>

@@ -158,18 +158,15 @@ export default function GitHubStatsReal() {
   };
 
   return (
-    <section
-      id="github"
-      className="py-12 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"
-    >
+    <section id="github" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             GitHub Activity
           </h2>
           <p className="text-sm text-muted-foreground">
@@ -186,7 +183,7 @@ export default function GitHubStatsReal() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
             >
-              <Card className="hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:scale-105 border-primary/10 hover:border-primary/50 hover:bg-primary/5 bg-card">
+              <Card className="transition-all duration-300 border-primary/10 hover:border-primary/50 bg-card">
                 <CardContent className="p-4 text-center">
                   <div className="flex flex-col items-center gap-2">
                     <div
@@ -229,7 +226,7 @@ export default function GitHubStatsReal() {
           viewport={{ once: true }}
           className="mb-4"
         >
-          <Card className="hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:scale-105 border-primary/10 hover:border-primary/50 hover:bg-primary/5 bg-card">
+          <Card className="transition-all duration-300 border-primary/10 hover:border-primary/50 bg-card">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg font-semibold">
                 Language Distribution
@@ -330,7 +327,7 @@ export default function GitHubStatsReal() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 border-border/50 hover:border-primary/50 hover:bg-primary/5 h-full bg-card">
+            <Card className="transition-all duration-300 border-border/50 hover:border-primary/50 h-full bg-card">
               <CardHeader className="pb-3">
                 <CardTitle className="text-base font-semibold flex items-center gap-2">
                   <GitBranch className="w-4 h-4 text-primary" />
@@ -380,7 +377,7 @@ export default function GitHubStatsReal() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 border-border/50 hover:border-primary/50 hover:bg-primary/5 h-full bg-card">
+            <Card className="transition-all duration-300 border-border/50 hover:border-primary/50 h-full bg-card">
               <CardHeader className="pb-3">
                 <CardTitle className="text-base font-semibold flex items-center gap-2">
                   <Star className="w-4 h-4 text-primary" />

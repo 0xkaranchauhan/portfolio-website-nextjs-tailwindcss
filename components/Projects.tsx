@@ -56,10 +56,7 @@ export default function Projects() {
   ];
 
   return (
-    <section
-      id="projects"
-      className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"
-    >
+    <section id="projects" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -84,7 +81,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full flex flex-col hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 border-border/50 hover:border-primary/50 hover:bg-primary/5 bg-card">
+              <Card className="h-full flex flex-col transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
                 <CardHeader>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
                 </CardHeader>

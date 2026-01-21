@@ -74,18 +74,15 @@ export default function BlockchainExpertise() {
   ];
 
   return (
-    <section
-      id="blockchain"
-      className="py-6 sm:py-8 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"
-    >
+    <section id="blockchain" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-4 sm:mb-6"
+          className="text-center mb-12"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Blockchain Expertise
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto">
@@ -104,7 +101,7 @@ export default function BlockchainExpertise() {
               onHoverStart={() => setHoveredCard(index)}
               onHoverEnd={() => setHoveredCard(null)}
             >
-              <Card className="h-full hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 border-border/50 hover:border-primary/50 hover:bg-primary/5 overflow-hidden relative group bg-card">
+              <Card className="h-full transition-all duration-300 border-border/50 overflow-hidden relative group bg-card">
                 <CardHeader className="pb-1.5 sm:pb-2 pt-3 sm:pt-4 px-3 sm:px-4 relative z-10">
                   <div className="flex items-start justify-between mb-2 sm:mb-3">
                     <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
