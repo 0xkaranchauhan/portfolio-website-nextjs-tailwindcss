@@ -60,12 +60,7 @@ export default function GitHubStatsReal() {
         const url = selectedYear
           ? `/api/github-contributions?year=${selectedYear}&t=${timestamp}`
           : `/api/github-contributions?t=${timestamp}`; // No year param = last 12 months
-        console.log(
-          "Fetching contributions for year:",
-          selectedYear,
-          "URL:",
-          url,
-        );
+
         const response = await fetch(url, {
           cache: "no-store",
           headers: {
@@ -74,15 +69,6 @@ export default function GitHubStatsReal() {
         });
         if (response.ok) {
           const data = await response.json();
-          console.log("Received contribution data:", {
-            totalContributions: data.totalContributions,
-            weeksCount: data.weeks?.length,
-            currentStreak: data.currentStreak,
-            longestStreak: data.longestStreak,
-            firstWeekDates: data.weeks?.[0]?.contributionDays?.map(
-              (d: any) => d.date,
-            ),
-          });
           setContributionData(data);
         } else {
           console.error(

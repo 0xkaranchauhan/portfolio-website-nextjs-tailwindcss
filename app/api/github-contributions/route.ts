@@ -44,8 +44,6 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const yearParam = searchParams.get("year");
 
-  console.log("API called with year:", yearParam);
-
   // If no year specified, get last 12 months
   const now = new Date();
   const oneYearAgo = new Date(now);
@@ -55,8 +53,6 @@ export async function GET(request: Request) {
     ? `${yearParam}-01-01T00:00:00Z`
     : oneYearAgo.toISOString();
   const to = yearParam ? `${yearParam}-12-31T23:59:59Z` : now.toISOString();
-
-  console.log("Fetching contributions from:", from, "to:", to);
 
   const query = `
     query($userName:String!, $from:DateTime!, $to:DateTime!) {

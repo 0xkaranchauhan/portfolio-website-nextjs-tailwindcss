@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 interface ContributionDay {
   contributionCount: number;
@@ -28,6 +29,11 @@ export default function ContributionGraph({
     x: number;
     y: number;
   } | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const months = [
     "Jan",
@@ -162,13 +168,11 @@ export default function ContributionGraph({
                             }),
                             count: day.contributionCount,
                             x: rect.left + rect.width / 2,
-                            y: rect.top + window.scrollY,
+                            y: rect.top,
                           };
-                          console.log("Tooltip hover:", tooltipData);
                           setHoveredDay(tooltipData);
                         }}
                         onMouseLeave={() => {
-                          console.log("Tooltip leave");
                           setHoveredDay(null);
                         }}
                       />
@@ -195,23 +199,27 @@ export default function ContributionGraph({
       </div>
 
       {/* Tooltip */}
-      {hoveredDay && (
-        <div
-          className="absolute z-[9999] px-3 py-2 text-xs bg-gray-900 text-white rounded-md shadow-2xl border-2 border-white/20 pointer-events-none"
-          style={{
-            left: `${hoveredDay.x}px`,
-            top: `${hoveredDay.y - 70}px`,
-            transform: "translateX(-50%)",
-          }}
-        >
-          <div className="font-bold whitespace-nowrap">
-            {hoveredDay.count} contribution{hoveredDay.count !== 1 ? "s" : ""}
-          </div>
-          <div className="text-gray-400 whitespace-nowrap text-[11px]">
-            {hoveredDay.date}
-          </div>
-        </div>
-      )}
+      {mounted &&
+        hoveredDay &&
+        createPortal(
+          <div
+            className="fixed z-[9999] px-3 py-2 text-xs bg-gray-900 text-white rounded-md shadow-2xl border-2 border-white/20 pointer-events-none"
+            style={{
+              left: `${hoveredDay.x}px`,
+              top: `${hoveredDay.y - 70}px`,
+              transform: "translateX(-50%)",
+            }}
+          >
+            <div className="font-bold whitespace-nowrap">
+              {hoveredDay.count} contribution
+              {hoveredDay.count !== 1 ? "s" : ""}
+            </div>
+            <div className="text-gray-400 whitespace-nowrap text-[11px]">
+              {hoveredDay.date}
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
