@@ -110,6 +110,7 @@ export async function GET(request: Request) {
                 }
               }
             }
+            pushedAt
           }
         }
       }
@@ -219,6 +220,7 @@ export async function GET(request: Request) {
             },
           ],
         },
+        lastCommitDate: repo.pushedAt || null,
       }));
 
     console.log("Recent commits count:", recentCommits.length);
