@@ -3,12 +3,39 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, ChevronDown, ChevronUp } from "lucide-react";
 import { fadeInUp, fadeInLeft, staggerContainer } from "@/lib/animations";
 import { getTextGradient } from "@/lib/colors";
 import siteContent from "@/data/site-content.json";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect, useRef } from "react";
 
 export default function Experience() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Set initial count based on screen width - only show first row
+    const updateVisibleCount = () => {
+      if (window.innerWidth >= 1024) {
+        setVisibleCount(2); // Desktop: 2 cards (one row)
+      } else if (window.innerWidth >= 640) {
+        setVisibleCount(1); // Tablet: 1 card (one row)
+      } else {
+        setVisibleCount(1); // Mobile: 1 card (one row)
+      }
+    };
+
+    // Initial call
+    updateVisibleCount();
+
+    // Add resize listener
+    window.addEventListener("resize", updateVisibleCount);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
   const experiences = [
     {
       title: "Tech Lead (Fullstack Blockchain)",
@@ -97,85 +124,108 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-transparent">
+    <section ref={sectionRef} id="experience" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4`}>
             {siteContent.experience.title}
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto">
             {siteContent.experience.subtitle}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="space-y-3 sm:space-y-4"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {experiences.map((exp) => {
-            return (
-              <motion.div key={exp.title} variants={fadeInLeft}>
-                <Card className="group transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
-                  <CardContent className="pt-3 sm:pt-4 pb-3 sm:pb-4 px-3 sm:px-6">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 sm:mb-3">
-                      <div className="flex-1">
-                        <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1">
-                          {exp.title}
-                        </h3>
-                        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">
-                          <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
-                          <span className="line-clamp-1">{exp.company}</span>
+        <div className="space-y-3 sm:space-y-4">
+          {(isExpanded ? experiences : experiences.slice(0, visibleCount)).map(
+            (exp, index) => {
+              return (
+                <div key={exp.title}>
+                  <Card className="group transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
+                    <CardContent className="pt-3 sm:pt-4 pb-3 sm:pb-4 px-3 sm:px-6">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 sm:mb-3">
+                        <div className="flex-1">
+                          <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1">
+                            {exp.title}
+                          </h3>
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">
+                            <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <span className="line-clamp-1">{exp.company}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-muted-foreground mt-1 sm:mt-0 sm:ml-4">
+                          <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <span className="whitespace-nowrap">
+                            {exp.period}
+                          </span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-muted-foreground mt-1 sm:mt-0 sm:ml-4">
-                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                        <span className="whitespace-nowrap">{exp.period}</span>
+
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-none">
+                        {exp.description}
+                      </p>
+
+                      <div className="mb-2 sm:mb-3">
+                        <h4 className="text-xs sm:text-sm font-semibold mb-1 sm:mb-1.5">
+                          Key Achievements:
+                        </h4>
+                        <ul className="list-disc list-inside space-y-0.5 sm:space-y-1 text-[10px] sm:text-xs text-muted-foreground">
+                          {exp.achievements
+                            .slice(0, 3)
+                            .map((achievement, i) => (
+                              <li key={i} className="line-clamp-1">
+                                {achievement}
+                              </li>
+                            ))}
+                        </ul>
                       </div>
-                    </div>
 
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-none">
-                      {exp.description}
-                    </p>
-
-                    <div className="mb-2 sm:mb-3">
-                      <h4 className="text-xs sm:text-sm font-semibold mb-1 sm:mb-1.5">
-                        Key Achievements:
-                      </h4>
-                      <ul className="list-disc list-inside space-y-0.5 sm:space-y-1 text-[10px] sm:text-xs text-muted-foreground">
-                        {exp.achievements.slice(0, 3).map((achievement, i) => (
-                          <li key={i} className="line-clamp-1">
-                            {achievement}
-                          </li>
+                      <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                        {exp.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            variant="secondary"
+                            className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0 sm:py-0.5"
+                          >
+                            {tag}
+                          </Badge>
                         ))}
-                      </ul>
-                    </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            },
+          )}
+        </div>
 
-                    <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                      {exp.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0 sm:py-0.5"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <div className="mt-6 sm:mt-8 flex justify-center">
+          <Button
+            variant="ghost"
+            onClick={(e) => {
+              e.preventDefault();
+              if (isExpanded) {
+                setIsExpanded(false);
+                // Scroll back to section when clicking Show Less
+                sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+              } else {
+                setIsExpanded(true);
+              }
+            }}
+            className="group hover:bg-primary/10 cursor-pointer"
+          >
+            {isExpanded ? (
+              <>
+                Show Less
+                <ChevronUp className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />
+              </>
+            ) : (
+              <>
+                Show More
+                <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+              </>
+            )}
+          </Button>
+        </div>
       </div>
     </section>
   );
