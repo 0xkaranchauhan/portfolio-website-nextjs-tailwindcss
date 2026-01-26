@@ -92,18 +92,21 @@ export async function GET(request: Request) {
   const commitsQuery = `
     query($userName:String!) {
       user(login: $userName) {
-        contributionsCollection {
-          commitContributionsByRepository(maxRepositories: 5) {
-            repository {
-              name
-              url
-            }
-            contributions(first: 5) {
-              nodes {
-                occurredAt
-                commitCount
-                repository {
-                  name
+        repositories(first: 10, orderBy: {field: PUSHED_AT, direction: DESC}) {
+          nodes {
+            name
+            url
+            defaultBranchRef {
+              target {
+                ... on Commit {
+                  history(first: 5) {
+                    totalCount
+                    nodes {
+                      message
+                      committedDate
+                      oid
+                    }
+                  }
                 }
               }
             }
@@ -167,6 +170,17 @@ export async function GET(request: Request) {
     const contributionsData = await contributionsResponse.json();
     const commitsData = await commitsResponse.json();
 
+    // Debug output
+    console.log(
+      "Commits data structure:",
+      JSON.stringify(
+        commitsData?.data?.user?.contributionsCollection
+          ?.commitContributionsByRepository || "No commits data",
+        null,
+        2,
+      ),
+    );
+
     if (contributionsData.errors || commitsData.errors) {
       console.error(
         "GitHub GraphQL errors:",
@@ -185,9 +199,29 @@ export async function GET(request: Request) {
       contributionsData.data.user.contributionsCollection.contributionCalendar;
     const streaks = calculateStreaks(calendar.weeks);
     const repositories = contributionsData.data.user.repositories.nodes;
-    const recentCommits =
-      commitsData.data.user.contributionsCollection
-        .commitContributionsByRepository;
+    // Check if commits data exists
+    // Process the repositories to get commit data
+    const repos = commitsData.data?.user?.repositories?.nodes || [];
+    const recentCommits = repos
+      .filter(
+        (repo: any) => repo.defaultBranchRef?.target?.history?.totalCount > 0,
+      )
+      .map((repo: any) => ({
+        repository: {
+          name: repo.name,
+          url: repo.url,
+        },
+        contributions: {
+          nodes: [
+            {
+              commitCount:
+                repo.defaultBranchRef?.target?.history?.totalCount || 0,
+            },
+          ],
+        },
+      }));
+
+    console.log("Recent commits count:", recentCommits.length);
 
     return NextResponse.json({
       ...calendar,

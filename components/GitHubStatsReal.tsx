@@ -1,10 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GitBranch, Star, Users, Loader2 } from "lucide-react";
+import {
+  GitBranch,
+  Star,
+  Users,
+  Loader2,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import {
   getGitHubStats,
   getLanguageStats,
@@ -23,9 +30,33 @@ export default function GitHubStatsReal() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null); // null means last 12 months
   const [contributionData, setContributionData] = useState<any>(null);
   const [contributionLoading, setContributionLoading] = useState(false);
+  const [isStatsExpanded, setIsStatsExpanded] = useState(false);
+  const [visibleStatsCount, setVisibleStatsCount] = useState(4);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 4 }, (_, i) => currentYear - 1 - i); // 2025, 2024, 2023, 2022
+
+  useEffect(() => {
+    // Set initial count based on screen width for stat cards
+    const updateVisibleCount = () => {
+      if (window.innerWidth >= 768) {
+        // md breakpoint
+        setVisibleStatsCount(6); // Show all on tablet and desktop
+      } else {
+        setVisibleStatsCount(2); // Show only 4 on mobile
+      }
+    };
+
+    // Initial call
+    updateVisibleCount();
+
+    // Add resize listener
+    window.addEventListener("resize", updateVisibleCount);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -144,7 +175,11 @@ export default function GitHubStatsReal() {
   };
 
   return (
-    <section id="github" className="py-12 sm:py-16 bg-transparent">
+    <section
+      ref={sectionRef}
+      id="github"
+      className="py-12 sm:py-16 bg-transparent"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -161,7 +196,10 @@ export default function GitHubStatsReal() {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-3 sm:mb-4">
-          {statCards.map((stat, index) => (
+          {(isStatsExpanded
+            ? statCards
+            : statCards.slice(0, visibleStatsCount)
+          ).map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
@@ -205,6 +243,37 @@ export default function GitHubStatsReal() {
             </motion.div>
           ))}
         </div>
+
+        {statCards.length > visibleStatsCount && (
+          <div className="mt-2 mb-4 flex justify-center md:hidden">
+            <Button
+              variant="ghost"
+              onClick={(e) => {
+                e.preventDefault();
+                if (isStatsExpanded) {
+                  setIsStatsExpanded(false);
+                  // Scroll back to section when clicking Show Less
+                  sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  setIsStatsExpanded(true);
+                }
+              }}
+              className="group hover:bg-primary/10 cursor-pointer"
+            >
+              {isStatsExpanded ? (
+                <>
+                  Show Less
+                  <ChevronUp className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />
+                </>
+              ) : (
+                <>
+                  Show More
+                  <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+                </>
+              )}
+            </Button>
+          </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

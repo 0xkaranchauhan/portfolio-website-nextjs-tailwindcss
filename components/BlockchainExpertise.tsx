@@ -126,7 +126,7 @@ export default function BlockchainExpertise() {
         </motion.div>
 
         <div className="relative">
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 max-w-6xl mx-auto">
             {(isExpanded ? expertise : expertise.slice(0, visibleCount)).map(
               (item, index) => (
                 <motion.div
@@ -139,7 +139,7 @@ export default function BlockchainExpertise() {
                   onHoverEnd={() => setHoveredCard(null)}
                 >
                   <Card className="h-full transition-all duration-300 border-border/50 overflow-hidden relative group bg-card">
-                    <CardHeader className="pb-1.5 sm:pb-2 pt-3 sm:pt-4 px-3 sm:px-4 relative z-10">
+                    <CardHeader className="pb-1 sm:pb-2 pt-2 sm:pt-3 px-3 sm:px-4 relative z-10">
                       <div className="flex items-start justify-between mb-2 sm:mb-3">
                         <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                           <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
@@ -155,7 +155,7 @@ export default function BlockchainExpertise() {
                       </CardTitle>
                     </CardHeader>
 
-                    <CardContent className="pb-2.5 sm:pb-3 px-3 sm:px-4 relative z-10">
+                    <CardContent className="pb-2 sm:pb-3 px-3 sm:px-4 relative z-10">
                       <p className="text-muted-foreground mb-2 sm:mb-3 text-sm sm:text-base leading-relaxed">
                         {item.description}
                       </p>

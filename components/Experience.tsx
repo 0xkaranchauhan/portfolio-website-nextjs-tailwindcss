@@ -139,16 +139,16 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="space-y-2 sm:space-y-3">
+        <div className="space-y-2 sm:space-y-3 max-w-6xl mx-auto">
           {(isExpanded ? experiences : experiences.slice(0, visibleCount)).map(
             (exp, index) => {
               return (
                 <div key={exp.title}>
                   <Card className="group transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
-                    <CardContent className="pt-3 sm:pt-4 pb-3 sm:pb-4 px-3 sm:px-6">
+                    <CardContent className="pt-2 sm:pt-3 pb-2 sm:pb-3 px-3 sm:px-5">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 sm:mb-3">
                         <div className="flex-1">
-                          <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1">
+                          <h3 className="text-base sm:text-lg font-bold mb-1">
                             {exp.title}
                           </h3>
                           <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">
@@ -168,11 +168,11 @@ export default function Experience() {
                         {exp.description}
                       </p>
 
-                      <div className="mb-2 sm:mb-3">
+                      <div className="mb-1.5 sm:mb-2.5">
                         <h4 className="text-xs sm:text-sm font-semibold mb-1 sm:mb-1.5">
                           Key Achievements:
                         </h4>
-                        <ul className="list-disc list-inside space-y-0.5 sm:space-y-1 text-xs sm:text-sm text-muted-foreground">
+                        <ul className="list-disc list-inside space-y-0.5 text-xs sm:text-sm text-muted-foreground">
                           {exp.achievements.map((achievement, i) => (
                             <li key={i}>{achievement}</li>
                           ))}

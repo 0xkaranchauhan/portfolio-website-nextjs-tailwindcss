@@ -105,7 +105,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5 max-w-6xl mx-auto">
             {(isExpanded ? projects : projects.slice(0, visibleCount)).map(
               (project, index) => (
                 <motion.div
@@ -116,17 +116,17 @@ export default function Projects() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card className="h-full flex flex-col transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
-                    <CardHeader className="pb-1 sm:pb-2 pt-2 sm:pt-4 px-4 sm:px-6">
+                    <CardHeader className="pb-1 sm:pb-2 pt-2 sm:pt-3 px-3 sm:px-4">
                       <CardTitle className="text-base sm:text-xl leading-tight">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="flex-1 flex flex-col px-4 pb-2 sm:px-6 sm:py-4">
+                    <CardContent className="flex-1 flex flex-col px-3 pb-2 sm:px-4 sm:py-3">
                       <p className="text-muted-foreground mb-2 sm:mb-3 flex-1 text-sm sm:text-base leading-relaxed">
                         {project.description}
                       </p>
 
-                      <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-2 sm:mb-3 p-2 sm:p-3 bg-muted/50 rounded-lg">
+                      <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-2 sm:mb-3 p-1.5 sm:p-2 bg-muted/50 rounded-lg">
                         {Object.entries(project.stats).map(([key, value]) => (
                           <div key={key} className="text-center">
                             <div className="font-bold text-xs sm:text-sm">
@@ -151,7 +151,7 @@ export default function Projects() {
                         ))}
                       </div>
 
-                      <div className="flex gap-2 pt-2 sm:pt-3">
+                      <div className="flex gap-1.5 sm:gap-2 pt-1.5 sm:pt-2">
                         <Button
                           variant="outline"
                           size="sm"
