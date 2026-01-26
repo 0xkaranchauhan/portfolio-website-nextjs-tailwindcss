@@ -124,9 +124,13 @@ export default function Experience() {
   ];
 
   return (
-    <section ref={sectionRef} id="experience" className="py-20 bg-transparent">
+    <section
+      ref={sectionRef}
+      id="experience"
+      className="py-12 sm:py-16 bg-transparent"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6 sm:mb-8">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4`}>
             {siteContent.experience.title}
           </h2>
@@ -135,7 +139,7 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-2 sm:space-y-3">
           {(isExpanded ? experiences : experiences.slice(0, visibleCount)).map(
             (exp, index) => {
               return (
@@ -160,7 +164,7 @@ export default function Experience() {
                         </div>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-none">
+                      <p className="text-muted-foreground mb-2 sm:mb-3 text-sm sm:text-base leading-relaxed">
                         {exp.description}
                       </p>
 
@@ -168,14 +172,10 @@ export default function Experience() {
                         <h4 className="text-xs sm:text-sm font-semibold mb-1 sm:mb-1.5">
                           Key Achievements:
                         </h4>
-                        <ul className="list-disc list-inside space-y-0.5 sm:space-y-1 text-[10px] sm:text-xs text-muted-foreground">
-                          {exp.achievements
-                            .slice(0, 3)
-                            .map((achievement, i) => (
-                              <li key={i} className="line-clamp-1">
-                                {achievement}
-                              </li>
-                            ))}
+                        <ul className="list-disc list-inside space-y-0.5 sm:space-y-1 text-xs sm:text-sm text-muted-foreground">
+                          {exp.achievements.map((achievement, i) => (
+                            <li key={i}>{achievement}</li>
+                          ))}
                         </ul>
                       </div>
 
@@ -184,7 +184,7 @@ export default function Experience() {
                           <Badge
                             key={tag}
                             variant="secondary"
-                            className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0 sm:py-0.5"
+                            className="text-[11px] sm:text-xs"
                           >
                             {tag}
                           </Badge>
@@ -198,7 +198,7 @@ export default function Experience() {
           )}
         </div>
 
-        <div className="mt-6 sm:mt-8 flex justify-center">
+        <div className="mt-3 sm:mt-6 flex justify-center">
           <Button
             variant="ghost"
             onClick={(e) => {

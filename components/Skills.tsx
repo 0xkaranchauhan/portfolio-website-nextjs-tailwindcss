@@ -57,13 +57,13 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-transparent">
+    <section id="skills" className="py-12 sm:py-16 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Skills & Technologies
@@ -80,7 +80,7 @@ export default function Skills() {
           viewport={{ once: true }}
         >
           <Tabs defaultValue="blockchain" className="max-w-4xl mx-auto">
-            <TabsList className="inline-flex w-auto mb-8 h-auto overflow-x-auto">
+            <TabsList className="inline-flex w-auto mb-4 sm:mb-6 h-auto overflow-x-auto">
               <TabsTrigger
                 value="blockchain"
                 className="text-xs sm:text-sm cursor-pointer flex-shrink-0"
@@ -111,7 +111,7 @@ export default function Skills() {
               <TabsContent key={category} value={category}>
                 <Card>
                   <CardContent className="pt-6">
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-5">
                       {skills.map((skill, index) => (
                         <div key={skill.name}>
                           <div className="flex justify-between mb-2">
@@ -143,7 +143,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 max-w-4xl mx-auto"
+          className="mt-6 sm:mt-8 max-w-4xl mx-auto"
         >
           <Card className="border-border/50 bg-card hover:border-primary/50 transition-all duration-300">
             <CardHeader>

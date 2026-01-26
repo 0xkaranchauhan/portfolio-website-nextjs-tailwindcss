@@ -82,15 +82,19 @@ export default function Projects() {
   ];
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 bg-transparent">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="py-12 sm:py-16 bg-transparent"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-3 sm:mb-6 text-center sm:text-left"
+          className="mb-2 sm:mb-5 text-center"
         >
-          <div className="max-w-2xl mx-auto sm:mx-0">
+          <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-1 sm:mb-2">
               Featured Projects
             </h2>
@@ -112,17 +116,17 @@ export default function Projects() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Card className="h-full flex flex-col transition-all duration-300 border-border/50 hover:border-primary/50 bg-card">
-                    <CardHeader className="pb-1 sm:pb-3 pt-3 sm:pt-5 px-4 sm:px-6">
+                    <CardHeader className="pb-1 sm:pb-2 pt-2 sm:pt-4 px-4 sm:px-6">
                       <CardTitle className="text-base sm:text-xl leading-tight">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="flex-1 flex flex-col px-4 pb-3 sm:px-6 sm:py-5">
-                      <p className="text-muted-foreground mb-3 sm:mb-4 flex-1 text-sm sm:text-base leading-relaxed">
+                    <CardContent className="flex-1 flex flex-col px-4 pb-2 sm:px-6 sm:py-4">
+                      <p className="text-muted-foreground mb-2 sm:mb-3 flex-1 text-sm sm:text-base leading-relaxed">
                         {project.description}
                       </p>
 
-                      <div className="grid grid-cols-3 gap-2.5 sm:gap-4 mb-3 sm:mb-4 p-3 sm:p-4 bg-muted/50 rounded-lg">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-2 sm:mb-3 p-2 sm:p-3 bg-muted/50 rounded-lg">
                         {Object.entries(project.stats).map(([key, value]) => (
                           <div key={key} className="text-center">
                             <div className="font-bold text-xs sm:text-sm">
@@ -135,7 +139,7 @@ export default function Projects() {
                         ))}
                       </div>
 
-                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                      <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
                         {project.tags.map((tag) => (
                           <Badge
                             key={tag}

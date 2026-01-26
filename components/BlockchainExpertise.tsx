@@ -102,15 +102,19 @@ export default function BlockchainExpertise() {
   ];
 
   return (
-    <section ref={sectionRef} id="blockchain" className="py-20 bg-transparent">
+    <section
+      ref={sectionRef}
+      id="blockchain"
+      className="py-12 sm:py-16 bg-transparent"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4 sm:mb-8 text-center sm:text-left"
+          className="mb-3 sm:mb-6 text-center"
         >
-          <div className="max-w-2xl mx-auto sm:mx-0">
+          <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-2">
               Blockchain Expertise
             </h2>
@@ -152,17 +156,17 @@ export default function BlockchainExpertise() {
                     </CardHeader>
 
                     <CardContent className="pb-2.5 sm:pb-3 px-3 sm:px-4 relative z-10">
-                      <p className="text-[11px] sm:text-xs md:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2">
+                      <p className="text-muted-foreground mb-2 sm:mb-3 text-sm sm:text-base leading-relaxed">
                         {item.description}
                       </p>
 
                       {/* Proficiency bar */}
                       <div className="mb-2 sm:mb-3 w-full">
                         <div className="flex items-center justify-between mb-0.5 sm:mb-1">
-                          <span className="text-[9px] sm:text-[10px] font-medium text-muted-foreground">
+                          <span className="text-xs sm:text-sm font-medium text-muted-foreground">
                             Proficiency
                           </span>
-                          <span className="text-[9px] sm:text-[10px] font-bold text-primary">
+                          <span className="text-xs sm:text-sm font-bold text-primary">
                             {item.proficiency}%
                           </span>
                         </div>
@@ -185,7 +189,7 @@ export default function BlockchainExpertise() {
                           <Badge
                             key={tag}
                             variant="secondary"
-                            className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0 sm:py-0.5 hover:bg-primary/20 transition-colors"
+                            className="text-[11px] sm:text-xs"
                           >
                             {tag}
                           </Badge>
@@ -199,7 +203,7 @@ export default function BlockchainExpertise() {
           </div>
         </div>
 
-        <div className="mt-4 flex justify-center">
+        <div className="mt-3 sm:mt-4 flex justify-center">
           <Button
             variant="ghost"
             onClick={(e) => {
